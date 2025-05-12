@@ -8,9 +8,9 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.edutech.msvc.usuarios</groupId>
-	<artifactId>msvc-usuarios</artifactId>
+	<artifactId>msvc-alumnos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>msvc-usuarios</name>
+	<name>msvc-alumnos</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
