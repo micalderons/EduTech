@@ -1,11 +1,13 @@
 package com.edutech.msvc.cursos.models.entities;
 
 import jakarta.persistence.*;
+import com.edutech.msvc.cursos.models.Alumno;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "curso")
@@ -29,14 +31,16 @@ public class Curso {
     private Long duracion;
 
     @Column(name = "fecha_creacion", nullable = false)
-    @NotNull(message = "El capo fecha creacion no puede estar vacio")
+    @NotNull(message = "El campo fecha creacion no puede estar vacio")
     private LocalDate fechaCreacion;
 
     @Column(nullable = false)
     @NotNull(message = "El campo precio no puede estara vacio")
     private Long precio;
 
+    @Column(nullable = false)
     @NotNull(message = "El campo estado no puede quedar vacio")
     private Boolean estado;
+
 
 }

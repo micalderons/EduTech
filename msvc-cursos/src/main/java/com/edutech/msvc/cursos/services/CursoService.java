@@ -1,5 +1,6 @@
 package com.edutech.msvc.cursos.services;
 
+import com.edutech.msvc.cursos.dtos.CursoUpdateDTO;
 import com.edutech.msvc.cursos.models.entities.Curso;
 
 import java.util.List;
