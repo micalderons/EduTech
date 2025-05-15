@@ -1,5 +1,6 @@
 package com.edutech.msvc.alumnos.servicies;
 
+import com.edutech.msvc.alumnos.dtos.EstadoDTO;
 import com.edutech.msvc.alumnos.exception.AlumnoException;
 import com.edutech.msvc.alumnos.models.entities.Alumno;
 import com.edutech.msvc.alumnos.repositories.AlumnoRepository;
@@ -45,5 +46,17 @@ public class AlumnoServicelmpl implements AlumnoService{
  @Override
  public void delete(Long id) {
    usuarioRepository.deleteById(id);
+ }
+
+ @Override
+ public Alumno cambiarEstadoCuenta(Long id, EstadoDTO estadoDTO) {
+   return usuarioRepository.findById(id).map(alumno -> {
+    alumno.setCuentaActiva(estadoDTO.getCuentaActiva());
+    return usuarioRepository.save(alumno);
+   }).orElseThrow(
+           ()-> new AlumnoException("Alumno con id "+id+" no encontrado")
+   );
+
+
  }
 }

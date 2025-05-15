@@ -1,5 +1,6 @@
 package com.edutech.msvc.alumnos.controller;
 
+import com.edutech.msvc.alumnos.dtos.EstadoDTO;
 import com.edutech.msvc.alumnos.models.entities.Alumno;
 import com.edutech.msvc.alumnos.servicies.AlumnoService;
 import jakarta.validation.Valid;
@@ -30,9 +31,26 @@ public class AlumnoController {
         Alumno alumno = this.alumnoService.findById(id);
         return ResponseEntity.status(HttpStatus.OK).body(alumno);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        alumnoService.delete(id);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .build();
+    }
+
     @PostMapping
     public ResponseEntity<Alumno> save(@Valid @RequestBody Alumno alumno) {
-        Alumno saved = this.alumnoService.save(alumno);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(alumnoService.save(alumno));
     }
+    @PutMapping("/{id}")
+    public  ResponseEntity<Alumno> estadoCuenta(@PathVariable Long id, @Valid @RequestBody EstadoDTO estadoDTO){
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(alumnoService.cambiarEstadoCuenta(id,estadoDTO));
+    }
+
 }
