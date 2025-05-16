@@ -1,19 +1,17 @@
 package com.edutech.msvc.cursos.models.entities;
 
 import jakarta.persistence.*;
-import com.edutech.msvc.cursos.models.Alumno;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "curso")
 @Getter @Setter @ToString
 @NoArgsConstructor @AllArgsConstructor
-public class Curso {
+public class Cursos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
