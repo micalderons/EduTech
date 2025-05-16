@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Table(name = "curso")
 @Getter @Setter @ToString
 @NoArgsConstructor @AllArgsConstructor
-public class Curso {
+public class Cursos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,14 +29,16 @@ public class Curso {
     private Long duracion;
 
     @Column(name = "fecha_creacion", nullable = false)
-    @NotNull(message = "El capo fecha creacion no puede estar vacio")
+    @NotNull(message = "El campo fecha creacion no puede estar vacio")
     private LocalDate fechaCreacion;
 
     @Column(nullable = false)
     @NotNull(message = "El campo precio no puede estara vacio")
     private Long precio;
 
+    @Column(nullable = false)
     @NotNull(message = "El campo estado no puede quedar vacio")
     private Boolean estado;
+
 
 }
