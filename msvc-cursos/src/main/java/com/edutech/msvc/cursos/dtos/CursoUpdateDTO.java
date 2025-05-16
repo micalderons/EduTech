@@ -4,7 +4,7 @@ import lombok.*;
 
 @Getter @Setter @ToString
 @AllArgsConstructor @NoArgsConstructor
-public class CursosUpdateDTO {
+public class CursoUpdateDTO {
     private String nombre;
     private String comentario;
     private Long duracion;

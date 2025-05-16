@@ -1,7 +1,7 @@
-package com.edutech.msvc.cursos.controller;
+package com.edutech.msvc.cursos.controllers;
 
-import com.edutech.msvc.cursos.models.entities.Cursos;
-import com.edutech.msvc.cursos.services.CursosService;
+import com.edutech.msvc.cursos.models.entities.Curso;
+import com.edutech.msvc.cursos.services.CursoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,26 +14,26 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/cursos")
 @Validated
-public class CursosController {
+public class CursoController {
 
     @Autowired
-    private CursosService cursoService;
+    private CursoService cursoService;
 
     @GetMapping
-    public ResponseEntity<List<Cursos>> findAll(){
-        List<Cursos> cursos = this.cursoService.findAll();
+    public ResponseEntity<List<Curso>> findAll(){
+        List<Curso> cursos = this.cursoService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(cursos);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cursos> findById(@PathVariable Long id){
-        Cursos curso = this.cursoService.findById(id);
+    public ResponseEntity<Curso> findById(@PathVariable Long id){
+        Curso curso = this.cursoService.findById(id);
         return ResponseEntity.status(HttpStatus.OK).body(curso);
     }
 
     @PostMapping
-    public ResponseEntity<Cursos> save(@Valid @RequestBody Cursos curso){
-        Cursos saved = this.cursoService.save(curso);
+    public ResponseEntity<Curso> save(@Valid @RequestBody Curso curso){
+        Curso saved = this.cursoService.save(curso);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 }

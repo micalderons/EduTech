@@ -10,13 +10,10 @@ import java.time.LocalDate;
 
 @Getter @Setter @ToString
 @NoArgsConstructor @AllArgsConstructor
-public class Alumno {
-    private Long idUsuario;
-    private String run;
-    private String nombres;
-    private String apellidos;
-    private LocalDate fechaNacimiento;
-    private String correo;
-    private String contraseña;
-    private Boolean cuentaActiva;
+public class Inscripcion {
+
+    private Long idInscripcion;
+    private LocalDate fechaInscripcion;
+    private Long idCurso;
+    private Long idAlumno;
 }
