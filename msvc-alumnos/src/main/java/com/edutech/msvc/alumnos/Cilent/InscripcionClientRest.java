@@ -1,11 +1,15 @@
 package com.edutech.msvc.alumnos.Cilent;
 
 import com.edutech.msvc.alumnos.models.Evaluacion;
+import com.edutech.msvc.alumnos.models.Inscripcion;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-@FeignClient(name = "msvc-inscripcion", url = "localhost:8086/api/v1/inscripcion")
-public interface InscripccionClientRest {
+
+import java.util.List;
+
+@FeignClient(name = "msvc-inscripcion", url = "localhost:8081/api/v1/inscripcion")
+public interface InscripcionClientRest {
     @GetMapping("/{id}")
-    Evaluacion findById(@PathVariable Long id);
+    List<Inscripcion> findByIdAlumno(@PathVariable Long id);
 }

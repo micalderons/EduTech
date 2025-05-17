@@ -10,7 +10,7 @@ public interface InscripcionService {
     List<InscripcionDTO> findAll();
     Inscripcion findById(Long id);
     Inscripcion save(Inscripcion inscripcion);
-    List<Inscripcion> findByAlumnoId(Long alumnoId);
-    List<Inscripcion> findByCursoId(Long cursoId);
+    List<Inscripcion> findByIdAlumno(Long alumnoId);
+    List<Inscripcion> findByIdCurso(Long cursoId);
 
 }
