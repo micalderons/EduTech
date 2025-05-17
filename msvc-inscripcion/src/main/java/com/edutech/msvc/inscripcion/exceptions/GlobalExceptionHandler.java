@@ -1,4 +1,4 @@
-package com.edutech.msvc.inscripcion.exception;
+package com.edutech.msvc.inscripcion.exceptions;
 
 import com.edutech.msvc.inscripcion.dtos.ErrorDTO;
 import org.springframework.http.HttpStatus;

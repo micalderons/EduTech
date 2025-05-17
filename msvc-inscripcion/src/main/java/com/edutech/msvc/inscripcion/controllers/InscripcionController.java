@@ -1,4 +1,4 @@
-package com.edutech.msvc.inscripcion.controller;
+package com.edutech.msvc.inscripcion.controllers;
 
 import com.edutech.msvc.inscripcion.dtos.InscripcionDTO;
 import com.edutech.msvc.inscripcion.models.entities.Inscripcion;

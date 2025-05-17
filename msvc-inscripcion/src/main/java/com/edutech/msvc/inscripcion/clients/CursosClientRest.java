@@ -1,4 +1,4 @@
-package com.edutech.msvc.inscripcion.client;
+package com.edutech.msvc.inscripcion.clients;
 
 import com.edutech.msvc.inscripcion.models.Cursos;
 import org.springframework.cloud.openfeign.FeignClient;

@@ -14,7 +14,4 @@ public class AlumnoDTO {
 
     private String run;
     private String nombreCompleto;
-    private LocalDate fechaNacimiento;
-    private String correo;
-    private String contraseña;
 }

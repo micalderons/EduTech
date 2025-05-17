@@ -9,5 +9,5 @@ public interface CursoService {
     List<Curso> findAll();
     Curso findById(Long id);
     Curso save(Curso curso);
-    List<InscripcionCursoDTO> findAtencionesById(Long cursoId);
+    List<InscripcionCursoDTO> findInscripcionesById(Long cursoId);
 }

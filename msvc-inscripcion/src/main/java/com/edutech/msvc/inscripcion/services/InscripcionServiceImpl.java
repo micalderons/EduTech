@@ -1,11 +1,11 @@
 package com.edutech.msvc.inscripcion.services;
 
-import com.edutech.msvc.inscripcion.client.AlumnoClientRest;
-import com.edutech.msvc.inscripcion.client.CursosClientRest;
+import com.edutech.msvc.inscripcion.clients.AlumnoClientRest;
+import com.edutech.msvc.inscripcion.clients.CursosClientRest;
 import com.edutech.msvc.inscripcion.dtos.AlumnoDTO;
 import com.edutech.msvc.inscripcion.dtos.CursoDTO;
 import com.edutech.msvc.inscripcion.dtos.InscripcionDTO;
-import com.edutech.msvc.inscripcion.exception.InscripcionException;
+import com.edutech.msvc.inscripcion.exceptions.InscripcionException;
 import com.edutech.msvc.inscripcion.models.Alumnos;
 import com.edutech.msvc.inscripcion.models.Cursos;
 import com.edutech.msvc.inscripcion.models.entities.Inscripcion;
