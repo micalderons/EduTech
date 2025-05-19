@@ -1,7 +1,8 @@
-package com.edutech.msvc.alumnos.servicies;
+package com.edutech.msvc.alumnos.services;
 
 import com.edutech.msvc.alumnos.Cilent.CursoClientRest;
 import com.edutech.msvc.alumnos.Cilent.InscripcionClientRest;
+import com.edutech.msvc.alumnos.dtos.CursoDTO;
 import com.edutech.msvc.alumnos.dtos.EstadoDTO;
 import com.edutech.msvc.alumnos.dtos.InscripcionAlumnoDTO;
 import com.edutech.msvc.alumnos.exception.AlumnoException;
@@ -78,15 +79,28 @@ public class AlumnoServicelmpl implements AlumnoService{
 
   if(!inscripciones.isEmpty()){
    return inscripciones.stream().map(inscripcion -> {
+    InscripcionAlumnoDTO inscripcionAlumnoDTO = new InscripcionAlumnoDTO();
     Curso curso = null;
-    try{
+    try {
      curso = this.cursoClientRest.findById(inscripcion.getIdCurso());
     }catch (FeignException ex){
      throw new AlumnoException("Al momento de generar el listado de inscripciones de alumnos se" +
              " encontro que el curso con id " + inscripcion.getIdCurso() + " no existe");
     }
+    CursoDTO cursoDTO = new CursoDTO();
+    cursoDTO.setNombre(curso.getNombre());
+    cursoDTO.setDuracion(curso.getDuracion());
+    cursoDTO.setComentario(curso.getComentario());
+    cursoDTO.setPrecio(curso.getPrecio());
+    cursoDTO.setFechaCreacion(curso.getFechaCreacion());
 
-   })
+    inscripcionAlumnoDTO.setFechaInscripcion(inscripcion.getFechaInscripcion());
+    inscripcionAlumnoDTO.setCurso(cursoDTO);
+
+    return inscripcionAlumnoDTO;
+
+   }).toList();
   }
+  return List.of();
  }
 }

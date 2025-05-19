@@ -2,7 +2,7 @@ package com.edutech.msvc.alumnos.controller;
 
 import com.edutech.msvc.alumnos.dtos.EstadoDTO;
 import com.edutech.msvc.alumnos.models.entities.Alumno;
-import com.edutech.msvc.alumnos.servicies.AlumnoService;
+import com.edutech.msvc.alumnos.services.AlumnoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

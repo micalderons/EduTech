@@ -1,4 +1,4 @@
-package com.edutech.msvc.alumnos.servicies;
+package com.edutech.msvc.alumnos.services;
 
 import com.edutech.msvc.alumnos.dtos.EstadoDTO;
 import com.edutech.msvc.alumnos.dtos.InscripcionAlumnoDTO;
