@@ -17,6 +17,7 @@
         <module>msvc-alumnos</module>
         <module>msvc-cursos</module>
         <module>msvc-inscripcion</module>
+        <module>msvc-boleta</module>
     </modules>
     <properties>
         <java.version>21</java.version>
