@@ -21,7 +21,7 @@ public class AlumnoServicelmpl implements AlumnoService{
  @Override
  public Alumno findById(Long id){
   return this.usuarioRepository.findById(id).orElseThrow(
-          () -> new AlumnoException("El Paciente con Id"+ id +" no se encuntra el la base de datos")
+          () -> new AlumnoException("El Alumno con Id"+ id +" no se encuntra el la base de datos")
   );
 
  }
