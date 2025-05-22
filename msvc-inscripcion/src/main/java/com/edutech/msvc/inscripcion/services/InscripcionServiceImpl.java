@@ -78,7 +78,7 @@ public class InscripcionServiceImpl implements InscripcionService{
     public Inscripcion save(Inscripcion inscripcion) {
         try{
             Alumnos alumno = this.alumnoClientRest.findById(inscripcion.getIdAlumno());
-            Cursos curso = this.cursosClientRest.findById(inscripcion.getIdInscripcion());
+            Cursos curso = this.cursosClientRest.findById(inscripcion.getIdCurso());
         }catch (FeignException ex) {
             throw new InscripcionException("Existen problemas con la asosiacion Alumno Curso");
         }
