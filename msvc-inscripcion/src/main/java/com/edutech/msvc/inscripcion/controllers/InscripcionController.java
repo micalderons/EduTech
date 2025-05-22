@@ -34,7 +34,7 @@ public class InscripcionController {
                 .body(this.inscripcionService.findById(id));
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<Inscripcion> save(@RequestBody @Valid Inscripcion inscripcion) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)

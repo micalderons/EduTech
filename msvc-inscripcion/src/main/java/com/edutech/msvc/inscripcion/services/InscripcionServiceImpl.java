@@ -12,9 +12,11 @@ import com.edutech.msvc.inscripcion.models.entities.Inscripcion;
 import com.edutech.msvc.inscripcion.repositories.InscripcionRepository;
 import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class InscripcionServiceImpl implements InscripcionService{
 
     @Autowired
@@ -84,12 +86,12 @@ public class InscripcionServiceImpl implements InscripcionService{
     }
 
     @Override
-    public List<Inscripcion> findByIdAlumno(Long alumnoId) {
+    public List<Inscripcion> findByAlumnoId(Long alumnoId) {
         return this.inscripcionRepository.findByIdAlumno(alumnoId);
     }
 
     @Override
-    public List<Inscripcion> findByIdCurso(Long cursoId) {
+    public List<Inscripcion> findByCursoId(Long cursoId) {
         return this.inscripcionRepository.findByIdCurso(cursoId);
     }
 }
