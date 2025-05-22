@@ -1,13 +1,18 @@
 package com.edutech.msvc.evaluaciones.services;
 
+import com.edutech.msvc.evaluaciones.clients.AlumnoClientRest;
+import com.edutech.msvc.evaluaciones.clients.PruebaClientRest;
+import com.edutech.msvc.evaluaciones.dtos.AlumnoDTO;
+import com.edutech.msvc.evaluaciones.dtos.EvaluacionDTO;
+import com.edutech.msvc.evaluaciones.dtos.PruebaDTO;
 import com.edutech.msvc.evaluaciones.exceptions.EvaluacionException;
 import com.edutech.msvc.evaluaciones.models.Alumno;
-import com.edutech.msvc.evaluaciones.models.Nota;
+import com.edutech.msvc.evaluaciones.models.Prueba;
+import com.edutech.msvc.evaluaciones.models.entities.Evaluacion;
 import com.edutech.msvc.evaluaciones.repositories.EvaluacionesRepository;
-import org.aspectj.weaver.ast.Not;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,21 +25,80 @@ public class EvaluacionesServiceImpl implements EvaluacionesService{
     @Autowired
     private EvaluacionesService evaluacionesService;
 
-    @Transactional(readOnly = true)
+    @Autowired
+    private AlumnoClientRest alumnoClientRest;
+
+    @Autowired
+    private PruebaClientRest pruebaClientRest;
+
     @Override
-    public List<Nota> findAll(){ return  this.evaluacionesRepository.findAll();}
+    public List<EvaluacionDTO> findAll(){
+        return this.evaluacionesRepository.findAll().stream().map(evaluacion -> {
+            Alumno alumno = null;
+            try{
+                alumno = this.alumnoClientRest.findById(evaluacion.getIdAlumno());
+            }catch (FeignException e){
+                throw new EvaluacionException("El alumno no existe");
+            }
+
+            Prueba prueba = null;
+            try {
+                prueba = this.pruebaClientRest.findById(evaluacion.getIdPrueba());
+            }catch (FeignException e){
+                throw new EvaluacionException("La prueba no existe");
+            }
+
+            AlumnoDTO alumnoDTO = new AlumnoDTO();
+            alumnoDTO.setRun(alumno.getRun());
+            alumnoDTO.setNombres(alumno.getNombres());
+            alumnoDTO.setApellidos(alumno.getApellidos());
+            alumnoDTO.setFechaNacimiento(alumno.getFechaNacimiento());
+            alumnoDTO.setCorreo(alumno.getCorreo());
+            alumnoDTO.setContraseña(alumnoDTO.getContraseña());
+            alumnoDTO.setCuentaActiva(alumnoDTO.getCuentaActiva());
+
+            PruebaDTO pruebaDTO = new PruebaDTO();
+            pruebaDTO.setIdAlumno(evaluacion.getIdAlumno());
+            pruebaDTO.setIdCurso(prueba.getIdCurso());
+            pruebaDTO.setIdCurso(prueba.getIdCurso());
+
+            EvaluacionDTO evaluacionDTO = new EvaluacionDTO();
+            evaluacionDTO.setIdAlumno(alumnoDTO);
+            evaluacionDTO.setIdPrueba(pruebaDTO);
+
+            return evaluacionDTO;
+
+        }).toList();
+    }
 
     @org.springframework.transaction.annotation.Transactional(readOnly = true)
     @Override
-    public Nota findById(Long id){
+    public Evaluacion findById(Long id){
         return this.evaluacionesRepository.findById(id).orElseThrow(
                 ()-> new EvaluacionException("Nota con id "+id+"no encontrada")
         );
     }
 
     @Override
-    public Nota save(Nota nota) {
-        return null;
+    public Evaluacion save (Evaluacion evaluacion){
+        try {
+            Alumno alumno = this.alumnoClientRest.findById(evaluacion.getIdAlumno());
+            Prueba prueba = this.pruebaClientRest.findById(evaluacion.getIdPrueba());
+        }catch (FeignException ex){
+            throw new EvaluacionException("No se pudo guardar el evaluacion");
+        }
+        return this.evaluacionesRepository.save(evaluacion);
+    }
+
+
+    @Override
+    public List<Evaluacion> findByIdAlumno(Long idAlumno){
+        return this.evaluacionesRepository.findByIdAlumno(idAlumno);
+    }
+
+    @Override
+    public List<Evaluacion> findByIdPrueba(Long idPrueba){
+        return this.evaluacionesRepository.findByIdPrueba(idPrueba);
     }
 
 

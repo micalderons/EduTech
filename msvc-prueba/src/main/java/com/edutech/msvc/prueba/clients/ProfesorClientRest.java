@@ -1,7 +1,7 @@
 package com.edutech.msvc.prueba.clients;
 
-import com.edutech.msvc.prueba.models.Profesor;
-import com.edutech.msvc.prueba.models.Prueba;
+import com.edutech.msvc.prueba.models.Profesores;
+import com.edutech.msvc.prueba.models.entities.Prueba;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +12,7 @@ import java.util.List;
 public interface ProfesorClientRest {
 
     @GetMapping
-    List<Profesor> findAll();
+    List<Profesores> findAll();
 
     @GetMapping("/{id}")
     Prueba findById(@PathVariable Long id);

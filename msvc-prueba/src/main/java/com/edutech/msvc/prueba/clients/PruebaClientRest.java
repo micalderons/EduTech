@@ -1,7 +1,6 @@
 package com.edutech.msvc.prueba.clients;
 
-import com.edutech.msvc.prueba.models.Prueba;
-import com.edutech.msvc.prueba.services.PruebaService;
+import com.edutech.msvc.prueba.models.entities.Prueba;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

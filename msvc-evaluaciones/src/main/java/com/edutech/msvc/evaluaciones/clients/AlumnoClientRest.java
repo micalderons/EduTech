@@ -1,7 +1,7 @@
 package com.edutech.msvc.evaluaciones.clients;
 
 import com.edutech.msvc.evaluaciones.models.Alumno;
-import com.edutech.msvc.evaluaciones.models.Prueba;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,4 +15,6 @@ public interface AlumnoClientRest {
 
     @GetMapping("/{id}")
     Alumno findById(@PathVariable Long id);
+
+    Alumno findById(@NotEmpty(message = "La nota no puede ser vacio") String idAlumno);
 }

@@ -1,21 +1,19 @@
-package com.edutech.msvc.evaluaciones.models;
+package com.edutech.msvc.evaluaciones.models.entities;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+@Entity
+@Table(name = "evaluacion")
 @Getter @Setter @ToString
 @NoArgsConstructor @AllArgsConstructor
-public class Nota {
+public class Evaluacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_nota")
-    private Long idNota;
+    private Long idEvaluacion;
     @NotEmpty(message = "La nota no puede ser vacio")
     private Float nota;
     @Column(name = "id_alumno")
@@ -26,6 +24,6 @@ public class Nota {
     private String idProfesor;
     @Column(name = "id_curso")
     @NotEmpty(message = "El curso no puede ser vacio")
-    private String idCurso;
+    private String idPrueba;
 
 }
