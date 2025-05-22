@@ -16,5 +16,4 @@ public interface AlumnoClientRest {
     @GetMapping("/{id}")
     Alumno findById(@PathVariable Long id);
 
-    Alumno findById(@NotEmpty(message = "La nota no puede ser vacio") String idAlumno);
 }

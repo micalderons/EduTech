@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class Prueba {
     private Long idPrueba;
-    private String idAlumno;
-    private String idProfesor;
-    private String idCurso;
+    private Long idAlumno;
+    private Long idProfesor;
+    private Long idCurso;
 }

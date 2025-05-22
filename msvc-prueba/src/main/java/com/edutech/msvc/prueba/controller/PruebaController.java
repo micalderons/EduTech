@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(/"api/v1/pruebas")
+@RequestMapping("/api/v1/prueba")
 @Validated
 public class PruebaController {
 
@@ -34,7 +34,7 @@ public class PruebaController {
                 .body(this.pruebaService.findByIdCurso(id));
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<Prueba> save(@RequestBody @Valid Prueba prueba){
         return ResponseEntity
                 .status(HttpStatus.CREATED)

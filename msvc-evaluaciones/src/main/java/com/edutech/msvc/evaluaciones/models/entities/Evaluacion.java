@@ -3,6 +3,7 @@ package com.edutech.msvc.evaluaciones.models.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Entity
@@ -17,13 +18,13 @@ public class Evaluacion {
     @NotEmpty(message = "La nota no puede ser vacio")
     private Float nota;
     @Column(name = "id_alumno")
-    @NotEmpty(message = "La nota no puede ser vacio")
-    private String idAlumno;
+    @NotNull(message = "La nota no puede ser vacio")
+    private Long idAlumno;
     @Column(name = "id_profesor")
-    @NotEmpty(message = "El profesor no puede ser vacio")
-    private String idProfesor;
+    @NotNull(message = "El profesor no puede ser vacio")
+    private Long idProfesor;
     @Column(name = "id_curso")
-    @NotEmpty(message = "El curso no puede ser vacio")
-    private String idPrueba;
+    @NotNull(message = "El curso no puede ser vacio")
+    private Long idPrueba;
 
 }

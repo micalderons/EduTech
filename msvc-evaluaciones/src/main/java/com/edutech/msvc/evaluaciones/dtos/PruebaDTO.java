@@ -5,7 +5,7 @@ import lombok.*;
 @Getter @Setter @ToString
 @NoArgsConstructor @AllArgsConstructor
 public class PruebaDTO {
-    private String idAlumno;
-    private String idProfesor;
-    private String idCurso;
+    private Long idAlumno;
+    private Long idProfesor;
+    private Long idCurso;
 }

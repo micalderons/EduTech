@@ -23,9 +23,6 @@ public class EvaluacionesServiceImpl implements EvaluacionesService{
     private EvaluacionesRepository evaluacionesRepository;
 
     @Autowired
-    private EvaluacionesService evaluacionesService;
-
-    @Autowired
     private AlumnoClientRest alumnoClientRest;
 
     @Autowired

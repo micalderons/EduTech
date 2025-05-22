@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/v1/evaluaciones")
 @Validated
 public class EvaluacionController {
 
     @Autowired
     private EvaluacionesService evaluacionesService;
 
-    @Autowired
+    @GetMapping
     public ResponseEntity<List<EvaluacionDTO>> findAll(){
         return ResponseEntity
                 .status(HttpStatus.OK)
@@ -33,7 +33,7 @@ public class EvaluacionController {
                 .body(this.evaluacionesService.findById(id));
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity <Evaluacion> save (@RequestBody @Validated Evaluacion evaluacion){
         return ResponseEntity
                 .status(HttpStatus.CREATED)

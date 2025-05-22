@@ -23,8 +23,6 @@ public class PruebaServiceImpl implements PruebaService {
 
     @Autowired
     private PruebaRepository pruebaRepository;
-    @Autowired
-    private PruebaService pruebaService;
 
     @Autowired
     private CursosClientRest cursoClientRest;
@@ -32,52 +30,50 @@ public class PruebaServiceImpl implements PruebaService {
     @Autowired
     private ProfesorClientRest profesorClientRest;
 
-    @Autowired
-    private PruebaClientRest pruebaClientRest;
 
     @Override
     public List<PruebaDTO> findAll() {
         return this.pruebaRepository.findAll().stream().map(Prueba ->{
             Prueba prueba = null;
-        try{
-            prueba = this.pruebaClientRest.findById(prueba.getIdPrueba());
-        }catch (FeignException ex){
-            throw new PruebaException("No se encontro el prueba");
-        }
-        Cursos curso = null;
-        try{
-            curso = this.cursoClientRest.findById(prueba.getIdCurso());
-        }catch (FeignException ex){
-            throw new PruebaException("No se encontro el curso");
-        }
 
-        Prueba profesor = null;
-        try{
-            profesor = this.profesorClientRest.findById(prueba.getIdProfesor());
-        }catch (FeignException ex){
-            throw new PruebaException("No se encontro el profesor");
-        }
+            prueba = this.pruebaRepository.findById(prueba.getIdPrueba()).orElseThrow(
+                    () -> new PruebaException("ALGO")
+            );
 
-        CursoDTO cursoDTO = new CursoDTO();
-        cursoDTO.setComentario(curso.getComentario());
-        cursoDTO.setDuracion(curso.getDuracion());
-        cursoDTO.setFechaCreacion(curso.getFechaCreacion());
-        cursoDTO.setPrecio(curso.getPrecio());
-        cursoDTO.setEstado(curso.getEstado());
+            Cursos curso = null;
+            try{
+                curso = this.cursoClientRest.findById(prueba.getIdCurso());
+            }catch (FeignException ex){
+                throw new PruebaException("No se encontro el curso");
+            }
 
-        ProfesorDTO profesorDTO = new ProfesorDTO();
-        profesorDTO.setRun(profesorDTO.getRun());
-        profesorDTO.setNombres(profesorDTO.getNombres());
-        profesorDTO.setApellidos(profesorDTO.getApellidos());
-        profesorDTO.setFechaNacimiento(profesorDTO.getFechaNacimiento());
-        profesorDTO.setCorreo(profesorDTO.getCorreo());
-        profesorDTO.setContrasenia(profesorDTO.getContrasenia());
-        profesorDTO.setCuentaActiva(profesorDTO.getCuentaActiva());
+            Profesores profesor = null;
+            try{
+                profesor = this.profesorClientRest.findById(prueba.getIdProfesor());
+            }catch (FeignException ex){
+                throw new PruebaException("No se encontro el profesor");
+            }
 
-        PruebaDTO pruebaDTO = new PruebaDTO();
-        pruebaDTO.setCurso(cursoDTO);
-        pruebaDTO.setProfesor(profesorDTO);
-        return pruebaDTO;
+            CursoDTO cursoDTO = new CursoDTO();
+            cursoDTO.setComentario(curso.getComentario());
+            cursoDTO.setDuracion(curso.getDuracion());
+            cursoDTO.setFechaCreacion(curso.getFechaCreacion());
+            cursoDTO.setPrecio(curso.getPrecio());
+            cursoDTO.setEstado(curso.getEstado());
+
+            ProfesorDTO profesorDTO = new ProfesorDTO();
+            profesorDTO.setRun(profesorDTO.getRun());
+            profesorDTO.setNombres(profesorDTO.getNombres());
+            profesorDTO.setApellidos(profesorDTO.getApellidos());
+            profesorDTO.setFechaNacimiento(profesorDTO.getFechaNacimiento());
+            profesorDTO.setCorreo(profesorDTO.getCorreo());
+            profesorDTO.setContrasenia(profesorDTO.getContrasenia());
+            profesorDTO.setCuentaActiva(profesorDTO.getCuentaActiva());
+
+            PruebaDTO pruebaDTO = new PruebaDTO();
+            pruebaDTO.setCurso(cursoDTO);
+            pruebaDTO.setProfesor(profesorDTO);
+            return pruebaDTO;
         }).toList();
     }
 
@@ -92,7 +88,7 @@ public class PruebaServiceImpl implements PruebaService {
     public Prueba save (Prueba prueba) {
         try {
             Cursos curso = this.cursoClientRest.findById(prueba.getIdCurso());
-            Prueba profesor = this.profesorClientRest.findById(prueba.getIdProfesor());
+            Profesores profesor = this.profesorClientRest.findById(prueba.getIdProfesor());
         } catch (FeignException ex) {
             throw new PruebaException("Existen problemas con la asosiacion Profesor Curso");
         }

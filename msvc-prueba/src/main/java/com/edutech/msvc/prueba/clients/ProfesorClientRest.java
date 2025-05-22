@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "msvc-profesor", url = "localhost:8082/api/v1/profesor" )
+@FeignClient(name = "msvc-profesor", url = "localhost:8081/api/v1/profesor" )
 public interface ProfesorClientRest {
 
     @GetMapping
     List<Profesores> findAll();
 
     @GetMapping("/{id}")
-    Prueba findById(@PathVariable Long id);
+    Profesores findById(@PathVariable Long id);
 }
