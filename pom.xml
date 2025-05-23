@@ -14,6 +14,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
+        <module>msvc-evaluaciones</module>
+        <module>msvc-prueba</module>
         <module>msvc-alumnos</module>
         <module>msvc-cursos</module>
         <module>msvc-inscripcion</module>
