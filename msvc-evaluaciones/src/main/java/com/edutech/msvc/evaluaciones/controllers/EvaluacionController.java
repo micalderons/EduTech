@@ -21,6 +21,7 @@ public class EvaluacionController {
 
     @GetMapping
     public ResponseEntity<List<EvaluacionDTO>> findAll(){
+        List<EvaluacionDTO> evaluacion = this.evaluacionesService.findAll();
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(this.evaluacionesService.findAll());

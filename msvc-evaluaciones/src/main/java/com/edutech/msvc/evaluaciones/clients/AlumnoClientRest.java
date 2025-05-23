@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "msvc-alumno", url = "localhost:8082/api/v1/alumno")
+@FeignClient(name = "msvc-alumno", url = "localhost:8084/api/v1/alumno")
 public interface AlumnoClientRest {
     @GetMapping
     List<Alumno> findAll();
