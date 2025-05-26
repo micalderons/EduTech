@@ -7,10 +7,10 @@
 		<artifactId>edutech</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<groupId>com.edutech.msvc.alumnos</groupId>
+	<groupId>com.edutech.msvc-alumno</groupId>
 	<artifactId>msvc-boleta</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>msvc-boleta</name>
+	<name>msvc-compra</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
