@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "msvc-inscripcion", url = "localhost:8081/api/v1/inscripcion")
+@FeignClient(name = "msvc-inscripcion", url = "localhost:8003/api/v1/inscripcion")
 public interface InscripcionClientRest {
     @GetMapping("/{id}")
     List<Inscripcion> findByIdAlumno(@PathVariable Long id);
