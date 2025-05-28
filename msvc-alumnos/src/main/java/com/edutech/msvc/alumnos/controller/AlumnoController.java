@@ -1,9 +1,8 @@
 package com.edutech.msvc.alumnos.controller;
 
 import com.edutech.msvc.alumnos.dtos.EstadoDTO;
-import com.edutech.msvc.alumnos.dtos.UpdateAlumnoDTO;
 import com.edutech.msvc.alumnos.models.entities.Alumno;
-import com.edutech.msvc.alumnos.servicies.AlumnoService;
+import com.edutech.msvc.alumnos.services.AlumnoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,12 +47,6 @@ public class AlumnoController {
                 .body(alumnoService.save(alumno));
     }
     @PutMapping("/{id}")
-    public  ResponseEntity<Alumno> update(@PathVariable Long id, @Valid @RequestBody UpdateAlumnoDTO updateAlumnoDTO){
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(alumnoService.updateById(id,updateAlumnoDTO));
-    }
-    @PutMapping("/{id}/estado")
     public  ResponseEntity<Alumno> estadoCuenta(@PathVariable Long id, @Valid @RequestBody EstadoDTO estadoDTO){
         return ResponseEntity
                 .status(HttpStatus.CREATED)

@@ -1,20 +1,22 @@
 package com.edutech.msvc.inscripcion.services;
 
-import com.edutech.msvc.inscripcion.client.AlumnoClientRest;
-import com.edutech.msvc.inscripcion.client.CursosClientRest;
+import com.edutech.msvc.inscripcion.clients.AlumnoClientRest;
+import com.edutech.msvc.inscripcion.clients.CursosClientRest;
 import com.edutech.msvc.inscripcion.dtos.AlumnoDTO;
 import com.edutech.msvc.inscripcion.dtos.CursoDTO;
 import com.edutech.msvc.inscripcion.dtos.InscripcionDTO;
-import com.edutech.msvc.inscripcion.exception.InscripcionException;
+import com.edutech.msvc.inscripcion.exceptions.InscripcionException;
 import com.edutech.msvc.inscripcion.models.Alumnos;
 import com.edutech.msvc.inscripcion.models.Cursos;
 import com.edutech.msvc.inscripcion.models.entities.Inscripcion;
 import com.edutech.msvc.inscripcion.repositories.InscripcionRepository;
 import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class InscripcionServiceImpl implements InscripcionService{
 
     @Autowired
@@ -76,7 +78,7 @@ public class InscripcionServiceImpl implements InscripcionService{
     public Inscripcion save(Inscripcion inscripcion) {
         try{
             Alumnos alumno = this.alumnoClientRest.findById(inscripcion.getIdAlumno());
-            Cursos curso = this.cursosClientRest.findById(inscripcion.getIdInscripcion());
+            Cursos curso = this.cursosClientRest.findById(inscripcion.getIdCurso());
         }catch (FeignException ex) {
             throw new InscripcionException("Existen problemas con la asosiacion Alumno Curso");
         }

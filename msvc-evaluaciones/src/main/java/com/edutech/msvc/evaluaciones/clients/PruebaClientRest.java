@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "msvc-nota", url = "localhost:8084/api/v1/nota")
+@FeignClient(name = "msvc-prueba", url = "localhost:8006/api/v1/prueba")
 public interface PruebaClientRest {
     @GetMapping
     List<Evaluacion> findAll();

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "inscripcion")
@@ -19,7 +19,7 @@ public class Inscripcion {
 
     @Column(name = "hora_inscripcion", nullable = false)
     @NotNull(message = "Campo horaInscripcion no puede estar vacio")
-    private LocalDateTime horaInscripcion;
+    private LocalDate fechaInscripcion;
 
     @Column(name = "id_curso", nullable = false)
     @NotNull(message = "Campo idCurso no puede estar vacia")
