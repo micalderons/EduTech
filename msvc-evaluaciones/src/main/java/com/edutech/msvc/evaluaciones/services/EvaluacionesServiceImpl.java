@@ -79,10 +79,14 @@ public class EvaluacionesServiceImpl implements EvaluacionesService{
     @Override
     public Evaluacion save (Evaluacion evaluacion){
         try {
-            Alumno alumno = this.alumnoClientRest.findById(evaluacion.getIdAlumno());
             Prueba prueba = this.pruebaClientRest.findById(evaluacion.getIdPrueba());
         }catch (FeignException ex){
-            throw new EvaluacionException("No se pudo guardar el evaluacion");
+            throw new EvaluacionException("No se pudo guardar la evaluacion por culpa de la Prueba");
+        }
+        try {
+            Alumno alumno = this.alumnoClientRest.findById(evaluacion.getIdAlumno());
+        }catch (FeignException ex){
+            throw new EvaluacionException("No se pudo guardar el evaluacion por culpa del Alumno");
         }
         return this.evaluacionesRepository.save(evaluacion);
     }

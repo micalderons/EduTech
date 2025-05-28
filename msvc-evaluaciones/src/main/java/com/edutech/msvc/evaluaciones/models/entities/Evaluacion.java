@@ -2,7 +2,6 @@ package com.edutech.msvc.evaluaciones.models.entities;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -15,7 +14,7 @@ public class Evaluacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_nota")
     private Long idEvaluacion;
-    @NotEmpty(message = "La nota no puede ser vacio")
+    @NotNull(message = "La nota no puede ser vacio")
     private Float nota;
     @Column(name = "id_alumno")
     @NotNull(message = "La nota no puede ser vacio")
