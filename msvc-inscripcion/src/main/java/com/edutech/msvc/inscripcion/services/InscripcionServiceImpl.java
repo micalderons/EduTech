@@ -62,6 +62,7 @@ public class InscripcionServiceImpl implements InscripcionService{
             InscripcionDTO inscripcionDTO = new InscripcionDTO();
             inscripcionDTO.setAlumno(alumnoDTO);
             inscripcionDTO.setCurso(cursoDTO);
+            inscripcionDTO.setFechaInscripcion(inscripcion.getFechaInscripcion());
 
             return inscripcionDTO;
         }).toList();
@@ -78,9 +79,13 @@ public class InscripcionServiceImpl implements InscripcionService{
     public Inscripcion save(Inscripcion inscripcion) {
         try{
             Alumnos alumno = this.alumnoClientRest.findById(inscripcion.getIdAlumno());
+        }catch (FeignException ex) {
+            throw new InscripcionException("Existen problemas con la asosiacion Alumno");
+        }
+        try{
             Cursos curso = this.cursosClientRest.findById(inscripcion.getIdCurso());
         }catch (FeignException ex) {
-            throw new InscripcionException("Existen problemas con la asosiacion Alumno Curso");
+            throw new InscripcionException("Existen problemas con la asosiacion Curso");
         }
         return this.inscripcionRepository.save(inscripcion);
     }
