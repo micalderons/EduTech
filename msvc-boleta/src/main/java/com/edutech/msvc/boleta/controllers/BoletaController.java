@@ -1,7 +1,7 @@
 package com.edutech.msvc.boleta.controllers;
 
 import com.edutech.msvc.boleta.dtos.BoletaDTO;
-import com.edutech.msvc.boleta.model.entity.Boleta;
+import com.edutech.msvc.boleta.models.entities.Boleta;
 import com.edutech.msvc.boleta.services.BoletaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +42,10 @@ public class BoletaController {
     @GetMapping("/profesor/{id}")
     public ResponseEntity<List<Boleta>> findByProfesorId(@PathVariable Long id) {
         return ResponseEntity.status(200).body(this.boletaService.findByProfesorId(id));
+    }
+
+    @GetMapping("/curso/{id}")
+    public ResponseEntity<List<Boleta>> findByCursoId(@PathVariable Long id) {
+        return ResponseEntity.status(200).body(this.boletaService.findByCursoId(id));
     }
 }
